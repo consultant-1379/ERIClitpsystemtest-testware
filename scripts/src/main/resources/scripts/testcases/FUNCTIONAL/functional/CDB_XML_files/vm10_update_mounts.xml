@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<litp:vm-service-vm_nfs_mounts-collection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:litp="http://www.ericsson.com/litp" xsi:schemaLocation="http://www.ericsson.com/litp litp-xml-schema/litp.xsd" id="vm_nfs_mounts">
+  <litp:vm-nfs-mount id="mount2">
+    <device_path>sfs:/vx/ST72-managedfs1</device_path>
+    <mount_options>ro,soft,defaults</mount_options>
+    <mount_point>/mnt/cluster2b_fun02</mount_point>
+  </litp:vm-nfs-mount>
+    <litp:vm-nfs-mount id="mount3_fun02">
+    <device_path>sfs:/vx/ST72-managedp3fsvm2</device_path>
+    <mount_options>rw,soft,defaults</mount_options>
+    <mount_point>/mnt/cluster2c_fun02_new</mount_point>
+  </litp:vm-nfs-mount>
+</litp:vm-service-vm_nfs_mounts-collection>

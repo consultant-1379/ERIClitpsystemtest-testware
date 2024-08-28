@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<litp:eth xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:litp="http://www.ericsson.com/litp" xsi:schemaLocation="http://www.ericsson.com/litp litp-xml-schema/litp.xsd" id="if0">
+  <device_name>eth0<!--note: this property is not updatable--></device_name>
+  <macaddress>FF:FF:FF:FF:FF:FF<!--note: this property is not updatable--></macaddress>
+  <master>bond0<!--note: this property is not updatable--></master>
+</litp:eth>

@@ -1,0 +1,15 @@
+This plugin was created using the variables
+PLUGIN_NAME=exlongordered
+PLUGIN_CLASSNAME=ExLongOrdered
+PLUGIN_CXP=CXP1234567
+
+It uses items in the core and package extension, and defines an ordered list of 3 callbacks tasks for each package-list it finds under each task where name contains LONG. Each callback tasks creates a file called /etc/exlongord1__call<n>_<hostname>_<packagelistname>.txt on the MS.
+
+The tasks should be run in order 1,2,3 BUT there is a 2 minute delay before it creates the 2nd file.
+
+NB. Currently the task list is unordered, but after LITPCDS-2114 it will be changed to be an ordered list.
+
+Files changed from the template are:
+ERIClitpexlongordered/pom.xml
+src/exlongordered_plugin/exlongordered_plugin.py
+ats/example_test.at

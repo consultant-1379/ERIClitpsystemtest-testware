@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<litp:vcs-clustered-service xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:litp="http://www.ericsson.com/litp" xsi:schemaLocation="http://www.ericsson.com/litp litp-xml-schema/litp.xsd" id="anseo">
+  <active>2</active>
+  <name>PAR_SG2</name>
+  <node_list>n2,n1</node_list>
+  <standby>0</standby>
+  <litp:clustered-service-applications-collection id="applications">
+    <litp:service-inherit source_path="/software/services/anseo" id="anseo_service">
+      <litp:service-packages-collection-inherit source_path="/software/services/anseo/packages" id="packages">
+        <litp:package-inherit source_path="/software/services/anseo/packages/pkg1" id="pkg1"/>
+      </litp:service-packages-collection-inherit>
+    </litp:service-inherit>
+  </litp:clustered-service-applications-collection>
+  <litp:clustered-service-ha_configs-collection id="ha_configs"/>
+  <litp:clustered-service-runtimes-collection id="runtimes"/>
+  <initial_online_dependency_list>lucky_luci,flying_doves</initial_online_dependency_list>
+  <offline_timeout>111</offline_timeout>
+  <online_timeout>51</online_timeout>
+  <litp:vcs-clustered-service-filesystems-collection id="filesystems"/>
+  <litp:vcs-clustered-service-ipaddresses-collection id="ipaddresses">
+    <litp:vip id="ip1">
+      <ipaddress>fdde:4d7e:d471:19::72:121/64<!--note: this property is not updatable--></ipaddress>
+      <network_name>traffic1</network_name>
+    </litp:vip>
+    <litp:vip id="ip2">
+      <ipaddress>10.20.72.121<!--note: this property is not updatable--></ipaddress>
+      <network_name>traffic2</network_name>
+    </litp:vip>
+    <litp:vip id="ip3">
+      <ipaddress>fdde:4d7e:d471:20::72:121/64<!--note: this property is not updatable--></ipaddress>
+      <network_name>traffic2</network_name>
+    </litp:vip>
+    <litp:vip id="ip11">
+       <ipaddress>fdde:4d7e:d471:19::72:a121/64<!--note: this property is not updatable--></ipaddress>
+       <network_name>traffic1</network_name>
+     </litp:vip>
+     <litp:vip id="ip12">
+       <ipaddress>10.20.72.250<!--note: this property is not updatable--></ipaddress>
+       <network_name>traffic2</network_name>
+     </litp:vip>
+     <litp:vip id="ip13">
+       <ipaddress>fdde:4d7e:d471:20::72:a121/64<!--note: this property is not updatable--></ipaddress>
+       <network_name>traffic2</network_name>
+     </litp:vip>
+  </litp:vcs-clustered-service-ipaddresses-collection>
+  <litp:vcs-clustered-service-triggers-collection id="triggers"/>
+</litp:vcs-clustered-service>

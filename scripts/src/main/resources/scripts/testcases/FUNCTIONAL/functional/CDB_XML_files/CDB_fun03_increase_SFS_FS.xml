@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='utf-8'?>
+<litp:sfs-service-pools-collection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:litp="http://www.ericsson.com/litp" xsi:schemaLocation="http://www.ericsson.com/litp litp-xml-schema/litp.xsd" id="pools">
+  <litp:sfs-pool id="second_pool">
+    <name>ST_Pool<!--note: this property is not updatable--></name>
+    <litp:sfs-pool-cache_objects-collection id="cache_objects"/>
+    <litp:sfs-pool-file_systems-collection id="file_systems">
+      <litp:sfs-filesystem id="managed_pool2_fs1">
+        <backup_policy>live</backup_policy>
+        <cache_name>72cache</cache_name>
+        <path>/vx/ST72-pool2managedfs1<!--note: this property is not updatable--></path>
+        <size>75M</size>
+        <snap_size>73</snap_size>
+      </litp:sfs-filesystem>
+      <litp:sfs-filesystem id="managed_pool2_fs2">
+        <cache_name>72cache</cache_name>
+        <path>/vx/ST72-pool2managedfs2<!--note: this property is not updatable--></path>
+        <size>55M</size>
+        <snap_size>111</snap_size>
+      </litp:sfs-filesystem>
+    </litp:sfs-pool-file_systems-collection>
+  </litp:sfs-pool>
+  <litp:sfs-pool id="sfs_pool">
+    <name>SFS_Pool<!--note: this property is not updatable--></name>
+    <litp:sfs-pool-cache_objects-collection id="cache_objects">
+      <litp:sfs-cache id="cache1">
+        <name>72cache<!--note: this property is not updatable--></name>
+      </litp:sfs-cache>
+    </litp:sfs-pool-cache_objects-collection>
+    <litp:sfs-pool-file_systems-collection id="file_systems">
+      <litp:sfs-filesystem id="managed_fs1">
+        <backup_policy>live</backup_policy>
+        <cache_name>72cache</cache_name>
+        <path>/vx/ST72-managedfs1<!--note: this property is not updatable--></path>
+        <size>108M</size>
+        <snap_size>150</snap_size>
+      </litp:sfs-filesystem>
+      <litp:sfs-filesystem id="managed_fs2">
+        <cache_name>72cache</cache_name>
+        <path>/vx/ST72-managedfs2<!--note: this property is not updatable--></path>
+        <size>108M</size>
+        <snap_size>200</snap_size>
+      </litp:sfs-filesystem>
+      <litp:sfs-filesystem id="managed_p2fs">
+        <cache_name>72cache</cache_name>
+        <path>/vx/ST72-managedp2fs<!--note: this property is not updatable--></path>
+        <size>105M</size>
+        <snap_size>7</snap_size>
+      </litp:sfs-filesystem>
+      <litp:sfs-filesystem id="managed_p3fs">
+        <cache_name>72cache</cache_name>
+        <path>/vx/ST72-managedp3fs<!--note: this property is not updatable--></path>
+        <size>103M</size>
+        <snap_size>80</snap_size>
+      </litp:sfs-filesystem>
+      <litp:sfs-filesystem id="managed_p3fsvm1">
+        <cache_name>72cache</cache_name>
+        <path>/vx/ST72-managedp3fsvm1<!--note: this property is not updatable--></path>
+        <size>102M</size>
+        <snap_size>80</snap_size>
+      </litp:sfs-filesystem>
+      <litp:sfs-filesystem id="managed_p3fsvm2">
+        <cache_name>72cache</cache_name>
+        <path>/vx/ST72-managedp3fsvm2<!--note: this property is not updatable--></path>
+        <size>106M</size>
+        <snap_size>80</snap_size>
+      </litp:sfs-filesystem>
+      <litp:sfs-filesystem id="managed_p4fs">
+        <cache_name>72cache</cache_name>
+        <path>/vx/ST72-managedp4fs<!--note: this property is not updatable--></path>
+        <size>110M</size>
+        <snap_size>200</snap_size>
+      </litp:sfs-filesystem>
+    </litp:sfs-pool-file_systems-collection>
+  </litp:sfs-pool>
+</litp:sfs-service-pools-collection>

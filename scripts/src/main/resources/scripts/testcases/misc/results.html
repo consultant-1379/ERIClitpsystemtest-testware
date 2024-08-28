@@ -1,0 +1,21 @@
+<html>Hi All<br><br>Results for ISO 2.7.18 with tarball 1.0.38 are below, please investigate failures:<br><br>Please add any notes for failures to the page here: http://10.44.86.30/jan/tmp/results_history.html<br><br><b>ST_Functional TESTS</b><br><br>http://10.44.86.30/jenkins/view/2_1_ST/job/2_1_ST_Functional/266/artifact/tmpSTMB/src/test_runner/test_result/test_report.html<br><br><table border="10" width="1000" align="center" bordercolor="3399FF">
+
+<tr>
+<th><big>MODULE</big></th>
+<th><big>PASSED</big></th>
+<th><big>FAILURES</big></th>
+<th><big>ERRORS</big></th>
+<th><big>PASS PERCENTAGE RATE</big></th>
+</tr>
+<!--ADD RESULTS HERE-->
+<tr><td>aa_ntp</td><td>1</td><td>0</td><td>0</td><td>100.00</td></tr>
+<tr><td>functional</td><td>2</td><td>0</td><td>0</td><td>100.00</td></tr>
+<tr><td>packages</td><td>10</td><td>0</td><td>0</td><td>100.00</td></tr>
+<tr><td>plugins</td><td>2</td><td>10</td><td>0</td><td>16.67</td></tr>
+<tr><td>security</td><td>1</td><td>1</td><td>10</td><td>8.33</td></tr>
+<tr><td>system_integrity</td><td>0</td><td>0</td><td>3</td><td>0.00</td></tr>
+<tr><td>zz_ntp</td><td>0</td><td>1</td><td>0</td><td>0.00</td></tr>
+<!--STOP ADDING RESULTS HERE-->
+<tr><td><big>ALL MODULES</big></td><td><big>16</big></td><td><big>12</big></td><td><big>13</big></td><td><big>39.02</big></td></tr>
+
+</table><br><br>plugins	testset_plugins.py	test_01_n_invalid_extension_items:		FAIL<br>plugins	testset_plugins.py	test_03_p_valid_example_item_and_plan:		FAIL<br>plugins	testset_plugins.py	test_04_p_valid_example_callback:		FAIL<br>plugins	testset_plugins.py	test_05_p_valid_core_config:		FAIL<br>plugins	testset_plugins.py	test_06_p_ordered_tasks:		FAIL<br>plugins	testset_plugins.py	test_07_p_restart_ordered_tasks:		FAIL<br>plugins	testset_plugins.py	test_08_p_valid_network_view:		FAIL<br>plugins	testset_plugins.py	test_09_n_fail_remote_tasks:		FAIL<br>plugins	testset_plugins.py	test_10_p_fail_rectify_remote_tasks:		FAIL<br>plugins	testset_plugins.py	test_11_p_updatable_items:		FAIL<br>security	testset_logging.py	test_01_ensure_no_litp_logs_in_tmp_or_var_tmp:		ERROR<br>security	testset_logging.py	test_02_No_System_critical_files_in_tmp:		ERROR<br>security	testset_search_cleartxt_password.py	test_01_search_root_for_cleartxt_password:		ERROR<br>security	testset_search_cleartxt_password.py	test_03_search_password_in_var_logs_msg:		ERROR<br>security	testset_search_cleartxt_password.py	test_04_search_password_in_json:		FAIL<br>security	testset_search_cleartxt_password.py	test_05_search_etc_for_cleartxt_password:		ERROR<br>security	testset_search_cleartxt_password.py	test_06_search_dirs_for_cleartxt_password:		ERROR<br>security	testset_search_for_string.py	test_01_p_search_for_ammeon:		ERROR<br>security	testset_search_for_string.py	test_02_p_search_system_passwords:		ERROR<br>security	testset_search_for_string.py	test_03_p_search_3pp_passwords:		ERROR<br>security	testset_search_for_string.py	test_04_p_system_intergity_search_for_ms1:		ERROR<br>system_integrity	testset_search_for_faults.py	test_01_p_search_for_core:		ERROR<br>system_integrity	testset_search_for_faults.py	test_02_p_search_logs_for_segfault:		ERROR<br>system_integrity	testset_search_for_faults.py	test_03_p_search_for_crash:		ERROR<br>zz_ntp	testset_zz_ntp.py	test_02_p_check_ntp_service:		FAIL<br><br>Regards<br><br>    The CI Team<br><br></html>

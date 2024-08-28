@@ -1,0 +1,17 @@
+#!/bin/bash
+# 
+case "$1" in
+start)
+echo "Starting service"
+;;
+stop)
+echo "Stopping service"
+;;
+restart)
+echo "Restarting service"
+;;
+status)
+echo "Showing status"
+;;
+esac
+exit 0

@@ -1,0 +1,16 @@
+This plugin was created using the variables
+PLUGIN_NAME=amanda
+PLUGIN_CLASSNAME=Amanda
+PlUGIN_CXP=CXP1234567
+
+It uses the node and storage-profile (network extension) and storage-profile-base items in the core extension. 
+It has been adapted to be able to be run during an automated test, so is invoked for any package-lists that have AMANDA in the name that are created.
+When it finds that package-list AMANDA has been created for a node, then it creates a ConfigTask for each storage-profile under each managed node.
+The ConfigTask creates a puppet resource that ensure that the file /etc/amandasp_<spname>_<nodename>.txt always exists on each  managed node.
+In addition for each storage-profile-base that it finds under each managed node, it creates a ConfigTask to ensure that the file /etc/amanda_<spname>_<nodename>.txt.
+
+The files changed from the template produced by the archetype are:
+ERIClitpamanda/src/amanda_plugin/amanda_plugin.py
+ERIClitpexampleplug/ats/example_test.at
+
+

@@ -1,0 +1,109 @@
+Create new root crontab on MS or on nodes
+ - crontab -e
+
+Populate crontab with command stating what service you want to restart
+!!! ONLY ONE OF THESE SERVICES SHOULD BE ADDED AT ANY ONE TIME !!!
+
+Litpd service restart
+*/2 * * * * (time /sbin/service litpd restart ; date) >> /tmp/litp_info.txt 2>&1
+
+Puppet Service Restart
+*/2 * * * * (time /sbin/service puppet restart ; date) >> /tmp/puppet_info.txt 2>&1
+
+Passenger service Restart
+*/2 * * * * (time /sbin/service httpd restart ; date) >> /tmp/passenger_info.txt 2>&1
+
+Mcollective service restart
+*/2 * * * * (time /sbin/service mcollective restart ; date) >> /tmp/mcollective_info.txt 2>&1
+
+Postgresql service restart
+*/2 * * * * (time /sbin/service postgresql restart ; date) >> /tmp/postgresql_info.txt 2>&1
+
+Puppet DB service restart
+*/2 * * * * (time /sbin/service puppetdb restart ; date) >> /tmp/puppetdb_info.txt 2>&1
+
+Celery service restart
+*/2 * * * * (time /sbin/service celeryd restart ; date) >> /tmp/celery_info.txt 2>&1
+
+
+Each of these crontab examples runs every two minutes which would be an
+average of 30 per hour.
+
+To change the time of restart simply edit the first numerical value in "*/x"
+where x is the number in minutes.
+
+The results will be stored in /tmp in the text files specified at the end of
+the command.
+
+To check the file for failed restarts simply use
+grep "FAILED\|ERROR"  "file name"
+
+#################################
+Start/Stop litp scripts to run together
+#################################
+
+Copy over two files from this directory over to /tmp directory on the  systems ms
+
+Average time to start litpd service is 2.0 seconds
+Average time to stop litpd service is 2.2 seconds
+** times may vary depending on system
+
+
+You must kick off the start_litp.sh and then one second later kick off the stop_litpd.sh 
+
+(This will ensure that litp service cannot start fully before a stop command interrupts it)
+
+>> sh start_litpd.sh ; sh stop_litpd.sh 
+
+These scripts will run start litpd service and stop litpd service respectively in a loop 10,000 times and will ammend a file litp_info.txt with the results of each command.
+ 
+This will be stored in /tmp directory on the node you run them on. 
+When checking the results in /tmp/litp_info.txt a few commands can be run to grep for errors
+
+cat /tmp/litp_info.txt | grep "FAILED"
+cat /tmp/litp_info.txt | grep "ERROR"
+
+It is also worth checking the current status of the service , run in this order
+
+service litpd status
+
+service litpd stop
+
+service litpd start
+
+service litpd restart
+
+service litpd status 
+
+kill "PID from previous status"
+
+service litpd start
+
+service litpd status
+
+kill -9 "PID from previous status"
+
+service litp start
+
+
+** This is to ensure that all commnads relating to this service are still in working order after scripts ran
+
+#################################
+12927 ADDITIONAL CRON JOB
+#################################
+
+Add this cron job to the one chosen above so two cron jobs will be running together
+
+
+Step 1 : - Make an output directory for the backup:
+          
+mkdir /tmp/test_backup
+
+Step 2 : Add this cron job to the list of running cron jobs
+[root@ms1dot28 ~]# crontab -l
+* * * * * /opt/ericsson/nms/litp/bin/litp_state_backup.sh /tmp/test_backup
+
+
+This will run the backup script every minute over the weekend and place any backups created in /tmp/test_backup
+
+There should only be a maximum of 5 backups present in /tmp/test_backup

@@ -1,0 +1,69 @@
+Instructions:
+
+1) log in to the MS as user with right access
+2) Copy the submitter.sh and rest_soak.sh files into /tmp/ directory
+3) Create the following directory "/tmp/test_backup" on the management server
+4) Set up the following cron job on the management server
+    * * * * * /opt/ericsson/nms/litp/bin/litp_state_backup.sh /tmp/test_backup
+
+5) Sanity check the system.
+
+    Issue the hastatus -sum command on one of the nodes and ensure all SG's are as expected.
+    Issue the create_snapshot command, followed by the create_snapshot --name X command
+        Ensure that both sets of snapshots are created, if not then snap_size on file-systems in the LITP model need to be set to a lower value.
+ 
+6) Initiate the test via the following command.
+    sh /tmp/submitter.sh
+
+7) cat /tmp/rest_soak.out to ensure the submitter worked properly
+
+Post run checks:
+
+1) Make sure plans are still running
+
+2) Use output file rest_soak.out located in /tmp/ to analyse the soak run :
+
+    - grep file for "ERROR".
+        grep ERROR /tmp/rest_soak.out --color
+      This will show if any curl command failed for any REST operation.
+
+    - grep FILE FOR "WARNING"
+        grep WARNING /tmp/rest_soak.out --color
+      This will show if there were any unexpected outputs from a REST operation.
+
+    - grep file for "Completed Iteration".
+        grep "Completed Iteration" /tmp/rest_soak.out --color
+      This will show how many successful iterations were performed.
+      6 plans run in total
+          1 named snapshot plan
+          1 deployment snapshot plan
+          1 package deployment plan
+          1 package removal plan
+          1 named snapshot removal plan
+          1 deployment snapshot removal plan
+ 
+
+3) Check /var/log/messages for errors, warnings and failures that may have been logged during the soak run.
+   Ensure also check any rotated messages log files.
+
+      cat /var/log/messages |grep -v DEBUG |grep -v deprecation |grep -i 'error\|warn\|fail'
+
+      Some common expected warnings:
+
+        - It is expected that a WARNING level deprecation message shall be logged every second iteration for the DELETE operation being executed again a deployment and named snapshot. Sphinx documentation page 'Snapshot Operations' lists the DELETE operation as being deprecated, should a WARNING level deprecation message log entry not be entered in to the logs for each DELETE execution then a bug needs to be opened.
+        - "Task returned by plugin "tag""
+              from ERIClitptag test plugin
+        - "INFO: RegexError: '' does not match ^[a-zA-Z0-9\-\._]+$"
+              every 10th iteration, see in rest_soak.sh: "# Do an update, change name on package-list using invalid data"
+        - 'WARNING: The cache "ST51-cache" already exists on NAS. Current cache size 508M is equal to the latest calculated value of 508M. No cache resizing needed.'
+
+
+      To grep excluding most common expected results:
+        grep -inH 'error\|warn\|fail' /var/log/messages* |grep -v DEBUG |grep -v deprecation|grep -v "WARNING: 'DELETE' operation is deprecated" |grep -v 'Task returned by plugin "tag"'| grep -v ' does not match \^\[a-zA-Z0-9\\-\\._\]+\$' |grep -v "already exists on NAS"
+
+4) Check files have been rotated as per the rules in the model.
+    Command to find rules:
+        litp show -p / -r |grep "type: logrotate-rule$" --color -A10 -B1
+    Explanation of rule properties available at https://arm1s11-eiffel004.eiffel.gic.ericsson.se:8443/nexus/content/sites/litp2/ERIClitpdocs/latest/item_types/logrotate_rule.html
+
+    Also Check that rotation of /var/log/messages and /var/log/litp/metrics.log does not result in any zero length files

@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='utf-8'?>
+<litp:software-services-collection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:litp="http://www.ericsson.com/litp" xsi:schemaLocation="http://www.ericsson.com/litp litp-xml-schema/litp.xsd" id="services">
+  <litp:vm-service id="added_FO_VM">
+    <cleanup_command>/sbin/service FO-VM force-stop</cleanup_command>
+    <service_name>FO-VM</service_name>
+    <litp:service-packages-collection id="packages"/>
+    <cpus>4</cpus>
+    <image_name>STvm1</image_name>
+    <internal_status_check>on</internal_status_check>
+    <ram>2000M</ram>
+    <litp:vm-service-vm_aliases-collection id="vm_aliases">
+      <litp:vm-alias id="dot75">
+        <address>10.46.83.3</address>
+        <alias_names>dot75,rocky,chase</alias_names>
+      </litp:vm-alias>
+      <litp:vm-alias id="dot76">
+        <address>10.46.83.4</address>
+        <alias_names>dot76,zuma,marshall</alias_names>
+      </litp:vm-alias>
+      <litp:vm-alias id="helios">
+        <address>10.46.83.2</address>
+        <alias_names>helios,sky,rubble</alias_names>
+      </litp:vm-alias>
+    </litp:vm-service-vm_aliases-collection>
+    <litp:vm-service-vm_network_interfaces-collection id="vm_network_interfaces">
+      <litp:vm-network-interface id="vm_nic1">
+        <device_name>eth0<!--note: this property is not updatable--></device_name>
+        <host_device>br5_911</host_device>
+        <network_name>net1vm</network_name>
+        <node_ip_map>{}<!--note: this property is not updatable--></node_ip_map>
+        <node_mac_address_map>{}<!--note: this property is not updatable--></node_mac_address_map>
+      </litp:vm-network-interface>
+    </litp:vm-service-vm_network_interfaces-collection>
+    <litp:vm-service-vm_nfs_mounts-collection id="vm_nfs_mounts"/>
+    <litp:vm-service-vm_packages-collection id="vm_packages">
+      <litp:vm-package id="cups">
+        <name>cups</name>
+      </litp:vm-package>
+      <litp:vm-package id="jaws">
+        <name>wireshark</name>
+      </litp:vm-package>
+    </litp:vm-service-vm_packages-collection>
+    <litp:vm-service-vm_ssh_keys-collection id="vm_ssh_keys"/>
+    <litp:vm-service-vm_yum_repos-collection id="vm_yum_repos">
+      <litp:vm-yum-repo id="os">
+        <base_url>http://helios/6/os/x86_64</base_url>
+        <name>os<!--note: this property is not updatable--></name>
+      </litp:vm-yum-repo>
+      <litp:vm-yum-repo id="updates">
+        <base_url>http://10.46.83.2/6/updates/x86_64/Packages</base_url>
+        <name>rhelPatches<!--note: this property is not updatable--></name>
+      </litp:vm-yum-repo>
+    </litp:vm-service-vm_yum_repos-collection>
+  </litp:vm-service>
+  <litp:vm-service id="added_PL_VM">
+    <cleanup_command>/sbin/service PL-VM force-stop</cleanup_command>
+    <service_name>PL-VM</service_name>
+    <litp:service-packages-collection id="packages"/>
+    <cpus>2</cpus>
+    <image_name>STvm6</image_name>
+    <internal_status_check>on</internal_status_check>
+    <ram>4000M</ram>
+    <litp:vm-service-vm_aliases-collection id="vm_aliases">
+      <litp:vm-alias id="dot75">
+        <address>10.46.83.3</address>
+        <alias_names>dot75,rocky,chase</alias_names>
+      </litp:vm-alias>
+      <litp:vm-alias id="dot76">
+        <address>10.46.83.4</address>
+        <alias_names>dot76,zuma,marshall</alias_names>
+      </litp:vm-alias>
+      <litp:vm-alias id="helios">
+        <address>10.46.83.2</address>
+        <alias_names>helios,sky,rubble</alias_names>
+      </litp:vm-alias>
+    </litp:vm-service-vm_aliases-collection>
+    <litp:vm-service-vm_network_interfaces-collection id="vm_network_interfaces">
+      <litp:vm-network-interface id="vm_nic1">
+        <device_name>eth0<!--note: this property is not updatable--></device_name>
+        <host_device>br5_911</host_device>
+        <network_name>net1vm</network_name>
+        <node_ip_map>{}<!--note: this property is not updatable--></node_ip_map>
+        <node_mac_address_map>{}<!--note: this property is not updatable--></node_mac_address_map>
+      </litp:vm-network-interface>
+    </litp:vm-service-vm_network_interfaces-collection>
+    <litp:vm-service-vm_nfs_mounts-collection id="vm_nfs_mounts"/>
+    <litp:vm-service-vm_packages-collection id="vm_packages">
+      <litp:vm-package id="cups">
+        <name>cups</name>
+      </litp:vm-package>
+      <litp:vm-package id="jaws">
+        <name>wireshark</name>
+      </litp:vm-package>
+    </litp:vm-service-vm_packages-collection>
+    <litp:vm-service-vm_ssh_keys-collection id="vm_ssh_keys"/>
+    <litp:vm-service-vm_yum_repos-collection id="vm_yum_repos">
+      <litp:vm-yum-repo id="os">
+        <base_url>http://helios/6/os/x86_64</base_url>
+        <name>os<!--note: this property is not updatable--></name>
+      </litp:vm-yum-repo>
+      <litp:vm-yum-repo id="updates">
+        <base_url>http://10.46.83.2/6/updates/x86_64/Packages</base_url>
+        <name>rhelPatches<!--note: this property is not updatable--></name>
+      </litp:vm-yum-repo>
+    </litp:vm-service-vm_yum_repos-collection>
+  </litp:vm-service>
+</litp:software-services-collection>

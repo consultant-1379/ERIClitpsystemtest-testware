@@ -1,0 +1,73 @@
+To Run model stress SOAK
+=========================
+1. Make an output directory for the backup 
+	mkdir /tmp/test_backup
+2. Copy stress_soak files over to a MS
+	scp model_stress/* root@10.44.235.150:/tmp
+3. Add the following cronjob by running 'crontab -e' :
+	* * * * * /opt/ericsson/nms/litp/bin/litp_state_backup.sh /tmp/test_backup
+4. In the directory you copied files to, run "sh submitter.sh"
+5. Output of the stress soak is sent to /tmp/
+	tail -f /tmp/stress_soak.out
+
+
+model_stress/submitter.sh - issues following in repeated loop (up to 200000 times)
+1. create package-list, create package, remove package-list via CLI
+2. create package-list, create package, remove package-list via REST
+3. create package-list via REST, create package via load XMl, remove package-list via REST
+
+
+5 rubbish XML loaded
+====================
+01 loads an XML package with a property name that doesn't exits
+    InvalidXMLError    Element 'donotexist': This element is not expected. Expected is one of ( release, repository, version )., line 4
+02 loads an XML file with incorrect tag
+    InvalidRequestError    Premature end of data in tag package line 2, line 4, column 1
+03 loads an XML file with an invalid location in heading
+    InvalidXMLError    Element '{http://www.ericsson.com/litp}package', attribute '{http:///2001/XMLSchema-instance}schemaLocation': The attribute '{http:///2001/XMLSchema-instance}schemaLocation' is not allowed., line 2
+04 loads an XML file that try changes a readonly property (not updatable by plugin)
+
+05 loads an XML file that trys changes a readonly property (updatable by plugin)
+
+06 Load XML package into incorrect location 
+
+07 Load XML package into location where we not allowed to load XML (/plans/plan)
+
+08 Try load incomplete XMl file with merge
+
+09 Try load incomplete XMl file with replace
+
+10 Try load command with incorrect argument
+
+Checks - run the below to see if they are any errors during soak
+================================================================
+
+grep  Error /tmp/stress_soak.out | grep -v "line 2" | grep -v "line 4"  | grep -v BAD_CLI  | grep -v '1.4.2@' | grep -v 'NOT-pac' | grep -v 'Unable to modify readonly property' | grep -v "expected '>', line 7" | grep -v 'is not an allowed child of /ms' | grep -v 'unrecognized arguments: --Incarg' | grep -v "InvalidLocationError    Not Found"
+
+grep -i 'Unrecoverable error in the server' /tmp/stress_soak.out
+
+Check for any mentions of traceback errors,failed or Error in the messages file. There may be results from before the beginning of the model stress which can be discarded.
+Expected:
+	Traceback from TORF-192343 may be seen
+grep  -i Traceb /var/log/messages --color
+grep -v "RegexError: '1.4.2@'" /var/log/messages | grep -v DEBUG|grep -i error --color
+grep -v 'INFO: XML load failed' /var/log/messages | grep -v DEBUG|grep -i failed --color
+
+
+List open files in use by litp from stress_soak.out file . 
+At the time of writing this (2.50.3) the number of open files is 144.
+
+cat stress_soak.out | grep -i losf_file_count | grep -v echo    (Note the loop_count as this can be used later in rate_per_hour)
+
+Check the expected number of backups exist under /tmp
+ls -l /tmp/test_backup  (Should be no more than 5 backup files present)
+
+Ensure the expected run rate has occurred
+==============================================
+
+The expected run rate per hour for this soak is 170 iterations
+
+To check this 
+1.Get the total duration the test has been running in hours
+2.Check the total number of iterations run (This can be seen by loop_count in above grep for "losf_file_count")
+3.Divide the total number of iterations by the duration in hours

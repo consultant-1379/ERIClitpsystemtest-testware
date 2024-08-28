@@ -1,0 +1,23 @@
+
+Soak testcase
+=============
+test_05_p_search_dict_passwords_not_in_testrun 
+					in testset_search_for_string.py
+test_07_search_large_dirs_4_cleartxt_password_not_in_testrun 
+					in testset_search_cleartxt_password.py
+
+
+test_05_p_search_dict_passwords_not_in_testrun
+==============================================================
+        Description:
+            Tests for any occurrence of dictionary password strings
+            on all nodes that have not been included in below 2 TC's
+            as result in a large number of hits.
+            	test_03_p_search_3pp_passwords
+            	test_02_p_search_system_passwords
+
+test_07_search_large_dirs_4_cleartxt_password_not_in_testrun
+==============================================================
+        Description:
+            TC's check for clear txt passwords  on '/var', '/usr', '/opt'
+            Results in a large number that will need to be further filtered

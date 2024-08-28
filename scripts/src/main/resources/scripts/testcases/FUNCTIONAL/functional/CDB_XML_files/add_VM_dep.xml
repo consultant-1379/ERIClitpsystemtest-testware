@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='utf-8'?>
+<litp:cluster-services-collection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:litp="http://www.ericsson.com/litp" xsi:schemaLocation="http://www.ericsson.com/litp litp-xml-schema/litp.xsd" id="services">
+  <litp:vcs-clustered-service id="X_ADD_FO_vm">
+    <active>1</active>
+    <dependency_list></dependency_list>
+    <name>X_ADD_FO_vm</name>
+    <node_list>n4,n3</node_list>
+    <standby>1</standby>
+    <litp:clustered-service-applications-collection id="applications">
+      <litp:vm-service-inherit source_path="/software/services/added_FO_VM" id="added_FO_VM">
+        <litp:service-packages-collection-inherit source_path="/software/services/added_FO_VM/packages" id="packages"/>
+        <adaptor_version>1.4.1-1<!--note: this property is not updatable--></adaptor_version>
+        <image_checksum>5fdb29ee2b72272d0ea4e05541e0cd37<!--note: this property is not updatable--></image_checksum>
+        <litp:vm-service-vm_aliases-collection-inherit source_path="/software/services/added_FO_VM/vm_aliases" id="vm_aliases">
+          <litp:vm-alias-inherit source_path="/software/services/added_FO_VM/vm_aliases/dot75" id="dot75"/>
+          <litp:vm-alias-inherit source_path="/software/services/added_FO_VM/vm_aliases/dot76" id="dot76"/>
+          <litp:vm-alias-inherit source_path="/software/services/added_FO_VM/vm_aliases/helios" id="helios"/>
+        </litp:vm-service-vm_aliases-collection-inherit>
+        <litp:vm-service-vm_network_interfaces-collection-inherit source_path="/software/services/added_FO_VM/vm_network_interfaces" id="vm_network_interfaces">
+          <litp:vm-network-interface-inherit source_path="/software/services/added_FO_VM/vm_network_interfaces/vm_nic1" id="vm_nic1">
+            <gateway>10.46.83.1</gateway>
+            <ipaddresses>10.46.83.60</ipaddresses>
+            <node_ip_map>{'n3': '10.46.83.141', 'n4': '10.46.83.141'}<!--note: this property is not updatable--></node_ip_map>
+          </litp:vm-network-interface-inherit>
+        </litp:vm-service-vm_network_interfaces-collection-inherit>
+        <litp:vm-service-vm_nfs_mounts-collection-inherit source_path="/software/services/added_FO_VM/vm_nfs_mounts" id="vm_nfs_mounts"/>
+        <litp:vm-service-vm_packages-collection-inherit source_path="/software/services/added_FO_VM/vm_packages" id="vm_packages">
+          <litp:vm-package-inherit source_path="/software/services/added_FO_VM/vm_packages/cups" id="cups"/>
+          <litp:vm-package-inherit source_path="/software/services/added_FO_VM/vm_packages/jaws" id="jaws"/>
+        </litp:vm-service-vm_packages-collection-inherit>
+        <litp:vm-service-vm_ssh_keys-collection-inherit source_path="/software/services/added_FO_VM/vm_ssh_keys" id="vm_ssh_keys"/>
+        <litp:vm-service-vm_yum_repos-collection-inherit source_path="/software/services/added_FO_VM/vm_yum_repos" id="vm_yum_repos">
+          <litp:vm-yum-repo-inherit source_path="/software/services/added_FO_VM/vm_yum_repos/os" id="os">
+            <checksum>1b7ea80dbda5c7f78a8a3e124b55cc2f<!--note: this property is not updatable--></checksum>
+          </litp:vm-yum-repo-inherit>
+          <litp:vm-yum-repo-inherit source_path="/software/services/added_FO_VM/vm_yum_repos/updates" id="updates">
+            <checksum>6ac152059f17e75b77ddbdf95786d402<!--note: this property is not updatable--></checksum>
+          </litp:vm-yum-repo-inherit>
+        </litp:vm-service-vm_yum_repos-collection-inherit>
+      </litp:vm-service-inherit>
+    </litp:clustered-service-applications-collection>
+    <litp:clustered-service-ha_configs-collection id="ha_configs"/>
+    <litp:clustered-service-runtimes-collection id="runtimes"/>
+    <online_timeout>800<!--note: this property is not updatable--></online_timeout>
+    <litp:vcs-clustered-service-filesystems-collection id="filesystems"/>
+    <litp:vcs-clustered-service-ipaddresses-collection id="ipaddresses"/>
+  </litp:vcs-clustered-service>
+  <litp:vcs-clustered-service id="X_ADD_PL_vm">
+    <active>2</active>
+    <name>X_ADD_PL_vm</name>
+    <node_list>n3,n4</node_list>
+    <standby>0</standby>
+    <litp:clustered-service-applications-collection id="applications">
+      <litp:vm-service-inherit source_path="/software/services/added_PL_VM" id="added_PL_VM">
+        <litp:service-packages-collection-inherit source_path="/software/services/added_PL_VM/packages" id="packages"/>
+        <adaptor_version>1.4.1-1<!--note: this property is not updatable--></adaptor_version>
+        <image_checksum>5fdb29ee2b72272d0ea4e05541e0cd37<!--note: this property is not updatable--></image_checksum>
+        <litp:vm-service-vm_aliases-collection-inherit source_path="/software/services/added_PL_VM/vm_aliases" id="vm_aliases">
+          <litp:vm-alias-inherit source_path="/software/services/added_PL_VM/vm_aliases/dot75" id="dot75"/>
+          <litp:vm-alias-inherit source_path="/software/services/added_PL_VM/vm_aliases/dot76" id="dot76"/>
+          <litp:vm-alias-inherit source_path="/software/services/added_PL_VM/vm_aliases/helios" id="helios"/>
+        </litp:vm-service-vm_aliases-collection-inherit>
+        <litp:vm-service-vm_network_interfaces-collection-inherit source_path="/software/services/added_PL_VM/vm_network_interfaces" id="vm_network_interfaces">
+          <litp:vm-network-interface-inherit source_path="/software/services/added_PL_VM/vm_network_interfaces/vm_nic1" id="vm_nic1">
+            <gateway>10.46.83.1</gateway>
+            <ipaddresses>10.46.83.61,10.46.83.62</ipaddresses>
+            <node_ip_map>{'n3': '10.46.83.142', 'n4': '10.46.83.143'}<!--note: this property is not updatable--></node_ip_map>
+          </litp:vm-network-interface-inherit>
+        </litp:vm-service-vm_network_interfaces-collection-inherit>
+        <litp:vm-service-vm_nfs_mounts-collection-inherit source_path="/software/services/added_PL_VM/vm_nfs_mounts" id="vm_nfs_mounts"/>
+        <litp:vm-service-vm_packages-collection-inherit source_path="/software/services/added_PL_VM/vm_packages" id="vm_packages">
+          <litp:vm-package-inherit source_path="/software/services/added_PL_VM/vm_packages/cups" id="cups"/>
+          <litp:vm-package-inherit source_path="/software/services/added_PL_VM/vm_packages/jaws" id="jaws"/>
+        </litp:vm-service-vm_packages-collection-inherit>
+        <litp:vm-service-vm_ssh_keys-collection-inherit source_path="/software/services/added_PL_VM/vm_ssh_keys" id="vm_ssh_keys"/>
+        <litp:vm-service-vm_yum_repos-collection-inherit source_path="/software/services/added_PL_VM/vm_yum_repos" id="vm_yum_repos">
+          <litp:vm-yum-repo-inherit source_path="/software/services/added_PL_VM/vm_yum_repos/os" id="os">
+            <checksum>1b7ea80dbda5c7f78a8a3e124b55cc2f<!--note: this property is not updatable--></checksum>
+          </litp:vm-yum-repo-inherit>
+          <litp:vm-yum-repo-inherit source_path="/software/services/added_PL_VM/vm_yum_repos/updates" id="updates">
+            <checksum>6ac152059f17e75b77ddbdf95786d402<!--note: this property is not updatable--></checksum>
+          </litp:vm-yum-repo-inherit>
+        </litp:vm-service-vm_yum_repos-collection-inherit>
+      </litp:vm-service-inherit>
+    </litp:clustered-service-applications-collection>
+    <litp:clustered-service-ha_configs-collection id="ha_configs"/>
+    <litp:clustered-service-runtimes-collection id="runtimes"/>
+    <online_timeout>800<!--note: this property is not updatable--></online_timeout>
+    <litp:vcs-clustered-service-filesystems-collection id="filesystems"/>
+    <litp:vcs-clustered-service-ipaddresses-collection id="ipaddresses"/>
+  </litp:vcs-clustered-service>
+</litp:cluster-services-collection>

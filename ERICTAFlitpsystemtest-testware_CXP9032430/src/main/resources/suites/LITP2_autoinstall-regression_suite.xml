@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="LITP2_System_Test_suite">
+  <test name="LITP2SystemTest" preserve-order="true">
+    <classes>
+      <class name="com.ericsson.nms.litp.taf.test.system_test.cases.LITPSystemTestRunner" />
+	  <methods>
+	    <include name="runERIClitpSystemTests"/>
+	    <include name="parseNosetestsReports"/>
+	  </methods> 
+    </classes>
+  </test>
+</suite>

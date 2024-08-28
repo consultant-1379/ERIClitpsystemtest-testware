@@ -1,0 +1,108 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.ericsson.nms.litp</groupId>
+    <artifactId>ERIClitptagapi</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <parent>
+        <groupId>com.ericsson.litp</groupId>
+        <artifactId>integration</artifactId>
+        <version>1.9.92</version>
+    </parent>
+    <scm>
+        <developerConnection>${ericsson.scm.url}</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+    <modules>
+        <module>ERIClitptagapi_CXP1234567</module>
+    </modules>
+<dependencyManagement><dependencies>
+<dependency><artifactId>ERIClitpmnlibvirt</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.15.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitppackage</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.29.7-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpnetwork_CXP9030513</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.27.5-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitplibvirtapi</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.23.2-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpcbaapi_CXP9030830</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.14.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpvolmgr</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.32.17-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitphostsapi_CXP9031075</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.15.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitplibvirt</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.30.2-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpipmi</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.20.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpnasapi</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.25.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitppackage_CXP9030581</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.29.7-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpyumapi_CXP9030586</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.16.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpipmi_CXP9030612</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.20.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpnasapi_CXP9030875</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.25.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitplibvirt_CXP9030547</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.30.2-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpdocs_CXP9030557</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.33.59-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpdhcpserviceapi_CXP9031641</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.8.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpyum_CXP9030585</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.22.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpvcsapi</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.24.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpvolmgr_CXP9030946</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.32.17-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpcfg</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.17.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpcli_CXP9030420</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.31.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpvcs_CXP9030870</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.31.7-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitplibvirtapi_CXP9030548</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.23.2-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpdnsclientapi</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.9.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpbmcapi</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.13.2-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpnassfs_CXP9030876</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.17.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitplogrotate_CXP9030583</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.11.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpvcsapi_CXP9030871</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.24.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpcore</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.33.29-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpcli</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.31.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpdocs</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.33.59-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpatrunner</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.1.228-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpnassfs</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.17.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpnas</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.29.3-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitptagapi_CXP1234567</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.0.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpbootmgr</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.28.2-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpntpapi</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.15.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitplinuxfirewall_CXP9031105</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.19.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpsanapi_CXP9030787</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.4.2-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpcore_CXP9030418</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.33.29-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitplsbservice</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.8.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpdhcpservice</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.10.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpatrunner_CXP9030558</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.1.228-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitplogrotate</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.11.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitphostsapi</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.15.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpsysparams_CXP9031229</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.15.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpsysparams</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.15.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpdnsclient_CXP9031073</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.12.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitppackageapi_CXP9030582</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.20.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitplinuxfirewallapi_CXP9031106</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.19.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpsysparamsapi</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.11.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitppackageapi</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.20.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpbootmgrapi_CXP9030523</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.20.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpnetworkapi_CXP9030514</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.26.4-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpntp</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.18.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitplinuxfirewall</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.19.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpmnlibvirt_CXP9031529</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.15.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpdhcpservice_CXP9031640</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.10.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpdhcpserviceapi</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.8.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitplogrotateapi_CXP9030584</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.9.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpcfg_CXP9030421</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.17.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpbootmgrapi</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.20.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpntp_CXP9030587</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.18.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpntpapi_CXP9030588</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.15.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpnas_CXP9030874</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.29.3-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpvolmgrapi_CXP9030947</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.23.6-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitplsbservice_CXP9031655</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.8.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpbmcapi_CXP9030611</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.13.2-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitptagapi</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.0.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpvolmgrapi</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.23.6-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitphosts</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.23.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpyum</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.22.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpnetworkapi</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.26.4-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpyumapi</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.16.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitplinuxfirewallapi</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.19.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitphosts_CXP9030589</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.23.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpbootmgr_CXP9030515</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.28.2-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpnetwork</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.27.5-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpvcs</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.31.7-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpsysparamsapi_CXP9031230</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.11.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitplogrotateapi</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.9.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitptag_CXP1234567</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.0.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpdnsclient</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.12.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitptag</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.0.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpcbaapi</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.14.1-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpsanapi</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.4.2-SNAPSHOT</version></dependency>
+<dependency><artifactId>ERIClitpdnsclientapi_CXP9031074</artifactId><groupId>com.ericsson.nms.litp</groupId><type>rpm</type><version>1.9.1-SNAPSHOT</version></dependency>
+</dependencies></dependencyManagement></project>

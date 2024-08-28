@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<litp:system-disks-collection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:litp="http://www.ericsson.com/litp" xsi:schemaLocation="http://www.ericsson.com/litp litp-xml-schema/litp.xsd" id="disks">
+  <litp:disk id="fun03_vxvm_1">
+    <bootable>false<!--note: this property is not updatable--></bootable>
+    <disk_part>false<!--note: this property is not updatable--></disk_part>
+    <name>fun03_vxvm_1</name>
+    <size>400M</size>
+    <uuid>6006016011602D00fe9958e23c4ae511</uuid>
+  </litp:disk>
+  <litp:disk id="fun03_vxvm_2">
+    <bootable>false<!--note: this property is not updatable--></bootable>
+    <disk_part>false<!--note: this property is not updatable--></disk_part>
+    <name>fun03_vxvm_2</name>
+    <size>400M</size>
+    <uuid>6006016011602D00009a58e23c4ae511</uuid>
+  </litp:disk>
+</litp:system-disks-collection>

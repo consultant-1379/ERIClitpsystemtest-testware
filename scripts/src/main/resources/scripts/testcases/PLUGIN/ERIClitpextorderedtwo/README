@@ -1,0 +1,20 @@
+This plugin was created using the variables
+PLUGIN_NAME=extorderedtwo
+PLUGIN_CLASSNAME=ExtOrderedTwo
+PLUGIN_CXP=CXP1234567
+It uses items in the core and package extension, and defines an ordered list containing 2 config and 2 callbacks tasks for each package-list it finds under each node where list has name containing ORDTEST
+For each packagelist under each node it creates the following files:
+Config1 - creates file /etc/example_ord2_conf1_<hostname>_<packagelistname> on each managed node
+Config2 - creates file /etc/example_ord2_conf2_<hostname>_<packagelistname> on each managed node
+Callback1 - creates file /etc/example_ord2_call1_<hostname>_<packagelistname> on the MS
+Callback2 - creates file /etc/example_ord2_call2_<hostname>_<packagelistname> on the MS
+
+Currently creates them in a list as:
+callback2,callback1,config2,config1
+
+After LITPCDS-2114 is complete this will be an ordered list.
+
+Files changed from the template are:
+ERIClitpextorderedtwo/pom.xml
+src/extorderedtwo_plugin/extorderedtwo_plugin.py
+ats/example_test.at

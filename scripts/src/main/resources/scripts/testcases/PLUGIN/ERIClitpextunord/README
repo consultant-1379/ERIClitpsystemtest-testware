@@ -1,0 +1,16 @@
+This plugin was created using the variables
+PLUGIN_NAME=extunord
+PLUGIN_CLASSNAME=ExtUnOrd
+PLUGIN_CXP=CXP1234567
+It uses items in the core and package extension, and defines an unordered list containing 1 config and 1 callbacks tasks for each package-list it finds under each node that has list with name containing UNORD
+For each packagelist under each node it creates the following files:
+Config1 - creates file /etc/example_unord_conf1_<hostname>_<packagelistname> on each managed node
+Callback1 - creates file /etc/example_unord_call1_<hostname>_<packagelistname> on the MS
+
+Currently creates them in a list as:
+callback1,config1
+
+Files changed from the template are:
+ERIClitpextunord/pom.xml
+src/extunord_plugin/extunord_plugin.py
+ats/example_test.at

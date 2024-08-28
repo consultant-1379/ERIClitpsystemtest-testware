@@ -1,0 +1,43 @@
+prepare.sh - if run with the new vcs deployment then got into odd things on first plan, so can use prepare.sh to do an initial creation of network, and run it before running submitter.sh
+
+stopstart.sh - a basic stop/start plan soak test. Runs 10000 plans which:
+ create package
+ start plan
+ prove can't update model
+ stop plan  
+ prove can add another package
+ create plan
+ start plan
+ stop plan
+ remove packages
+ create plan
+ start plan
+ stop plan
+ 
+NB. Needs to be amended to use IP range and MAC address relevant to box run on
+
+submitter.sh - a script to invoke the stopstart.sh in the background, writing the output to stopstart.out
+
+NB. Since first wrote order in which packages and IP addresses get run has altered,
+which means that package is done second. Therefore might NOT see removal of
+firefox as package, as it hadn't got as far as running those tasks when stopped. 
+Script has been updated to cope with that.
+
+At end of test need to verify:
+1. No /software/items/epack* created - these are the ones attempted to be created when model was running
+2. grep "Remove when stopped output" stopstart.out | grep -v "output 0"
+should return nothing - so all remove when stopped should have succeeded
+3. grep "Create when stopped output" stopstart.out | grep -v "output 0"
+should return nothing - so all create when stopped should have succeeded
+4. grep "Remove when stopping output" stopstart.out | grep -v "output 1"
+should return nothing - so all remove when stopping should have failed
+5. grep "Create when stopping output" stopstart.out | grep -v "output 1"
+should return nothing - so all create when stopping should have failed
+6. grep "Create when running output" stopstart.out | grep -v "output 1"
+should return nothing - so all create when running should have failed
+7. grep "Found" stopstart.out | grep -v "plan 0"
+should return nothing - so all expected results of show plan succeeded
+8. grep "Notfound" stopstart.out | grep -v "plan 1"
+should return nothing - so all expected results of show plan succeeded (tasks that expect to NOT be there)
+
+

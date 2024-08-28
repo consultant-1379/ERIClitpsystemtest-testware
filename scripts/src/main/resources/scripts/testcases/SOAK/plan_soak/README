@@ -1,0 +1,66 @@
+repeat.plan.multiple.tasks.update.sh - a basic plan soak test. 
+
+	It runs repeated plans which update, create and remove items. Hardcoded to run on 10.44.86.105
+
+	Instructions:
+
+	1) log in to the MS as root user
+	2) Ensure a snapshot does not exist on the system before running (TASK ADDED TO BOARD TO MAKE CODE MORE ROBUST)
+	3) Create the following directory "/tmp/test_backup" on the MS
+	4) Set up the following cron job via the 'crontab -e' command on the MS:
+	 * * * * * /opt/ericsson/nms/litp/bin/litp_state_backup.sh /tmp/test_backup
+
+	5) Install dummy plugin which adds 700 dummy tasks to each plan:
+		litp import /tmp/ERIClitpmassive_phase_CXP1234567-1.0.1-SNAPSHOT20170118111648.noarch.rpm litp
+		yum -y install /tmp/ERIClitpmassive_phase_CXP1234567-1.0.1-SNAPSHOT20170118111648.noarch.rpm
+		litp update -p /litp/logging -o force_debug=true
+
+	6) log in to the MS as root user
+	7) Copy repeat.plan.multiple.tasks.update.sh to $HOME
+	8) Make file executable:
+	 chmod 777 repeat.plan.multiple.tasks.update.sh
+	9) Execute this command:
+	 nohup ./repeat.plan.multiple.tasks.update.sh &
+	 If you instead use "nohup ./repeat.plan.multiple.tasks.update.sh true &" then all litp commands are logged in a text file - /tmp/soak_log.csv
+
+	Post run checks:
+	1) Make sure plans are still running
+
+	2) Check output file for errors - $HOME/nohup.out
+	grep "Unexpected error" nohup.out 
+
+	3) Check /var/log/messages for errors, and look to see if any are unexpected. We expect errors around incorrect sysparam "fs.wrong" and deployment failures it causes. Easier if you first remove DEBUG messages
+	grep -v DEBUG /var/log/messages > /var/log/messages.nodebug
+	grep error /var/log/messages.nodebug -i --color
+
+	4) Check warning messages for tracebacks
+	grep WARN /var/log/messages.nodebug -i --color
+
+	5)  You can see how many plans have been run with this command:
+
+	grep IST nohup.out | wc -l
+	or grep GMT nohup.out | wc -l
+	(TODO - put a clear counter in!)
+
+	6) To stop it kill the process - identify the process with ps -ef | grep repeat
+
+	7) Check files have been rotated as per the rules in the model.
+		Command to find rules:
+			litp show -p / -r |grep "type: logrotate-rule$" --color -A10 -B1
+		Explanation of rule properties available at https://arm1s11-eiffel004.eiffel.gic.ericsson.se:8443/nexus/content/sites/litp2/ERIClitpdocs/latest/item_types/logrotate_rule.html
+
+		Also Check that rotation of /var/log/messages and /var/log/litp/metrics.log does not result in any zero length files
+
+	8) Check that there are no more than 5 backups present in /tmp/test_backup 
+
+
+
+repeat.resume.sh - tests repeated resumed plans
+
+	1) log in to the MS as any user 
+	2) Copy repeat.resume to $HOME
+	3) Make file executable:
+	 chmod 777 repeat.resume
+	4) Execute this command:
+	 nohup ./repeat.resume.sh &
+

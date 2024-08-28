@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
+<litp:disk-inherit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:litp="http://www.ericsson.com/litp" xsi:schemaLocation="http://www.ericsson.com/litp litp-xml-schema/litp.xsd" id="disk0_1" source_path="/infrastructure/systems/sys2/disks/disk0_1">
+  <disk_part>false<!--note: this property is not updatable--></disk_part>
+</litp:disk-inherit>

@@ -1,0 +1,3 @@
+This extension is an upgrade of that held in ERIClitpexampleextapi directory.
+It does not have the togo property, and has a migration script to remove the
+togo property that was marked as deprecated in version 1 of the example-item.

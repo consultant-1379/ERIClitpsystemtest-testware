@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<litp:volume-group xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:litp="http://www.ericsson.com/litp" xsi:schemaLocation="http://www.ericsson.com/litp litp-xml-schema/litp.xsd" id="CDB_fun03_vg">
+  <volume_group_name>CDB_fun03_vg<!--note: this property is not updatable--></volume_group_name>
+  <litp:volume-group-file_systems-collection id="file_systems">
+    <litp:file-system id="CDB_fun03_vg_fs1">
+      <mount_point>/CDB_fun03_vg_fs1<!--note: this property is not updatable--></mount_point>
+      <size>300M</size>
+      <snap_external>false</snap_external>
+      <snap_size>10</snap_size>
+      <type>ext4<!--note: this property is not updatable--></type>
+    </litp:file-system>
+  </litp:volume-group-file_systems-collection>
+  <litp:volume-group-physical_devices-collection id="physical_devices">
+    <litp:physical-device id="pd1">
+      <device_name>fun03_lvm_3<!--note: this property is not updatable--></device_name>
+    </litp:physical-device>
+    <litp:physical-device id="pd2">
+      <device_name>fun03_lvm_4<!--note: this property is not updatable--></device_name>
+    </litp:physical-device>
+  </litp:volume-group-physical_devices-collection>
+</litp:volume-group>
+

@@ -1,0 +1,15 @@
+This extension was created using the variables
+EXTENSION_NAME=exampleextapi
+EXTENSION_CLASSNAME=ExampleExtApi
+EXTENSION_CXP=CXP1234567
+
+This extension defines an item called example-item which extends software-item so that it can be deployed in the model under the /software/items. It has properties:
+name - basic_string
+size - of type example_byte_size
+rubbish - no type defined
+example_byte_size is a new PropertyType defined by this extension which expects size to be defined in bytes, e.g. 10B
+rubbish has its own PropertyValidator that ensures its not > 10 characters. NB normally for this simple a validator there is a length validator in the core, but this validator was added to prove plugins could write their own validators as per the documentation.
+
+The files changed from the template produced by the archetype are:
+ERIClitpexampleextapi/src/exampleext_extension/exampleext_extension.py
+ERIClitpexampleextapi/test/test_exampleext_extension.py

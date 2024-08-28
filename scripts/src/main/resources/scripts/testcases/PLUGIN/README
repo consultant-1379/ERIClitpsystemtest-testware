@@ -1,0 +1,10 @@
+Each plugin has its own README:
+ERIClitpexamplecall - is an example plugin that uses CallbackTasks and just core model extension
+ERIClitpexampleextapi - example model extension that creates ItemType example-item, with its own PropertyValidator. This extension must be built first, before the ERIClitpexampleplug plugin can be used
+ERIClitpexampleplug - example plugin that uses ConfigTasks and uses items defined in extension ERIClitpexampleextapi.
+ERIClitpamanda - example plugin that uses ConfigTasks and storage-profile and storage-profile-base to verify can get base items, as well as those not in core extension
+ERIClitpextorderedone - example plugin with 2 callbacks and 2 configs on package-list, in prescribed order. Referred to as Plugin A at https://team.ammeon.com/confluence/display/LITP/PLUGIN+TC
+ERIClitpextorderedtwo - example plugin with 2 callbacks and 2 configs on package-list, in prescribed order. Referred to as Plugin B at https://team.ammeon.com/confluence/display/LITP/PLUGIN+TC
+ERIClitpextunord - example plugin with 1 callbacks and 1 configs on package-list, in no order. Referred to as Plugin C at https://team.ammeon.com/confluence/display/LITP/PLUGIN+TC
+ERIClitpexlongordered - example plugin with 3 ordered callbacks on package-list, where one is long running to allow restart in middle, referred to as plugin D at https://team.ammeon.com/confluence/display/LITP/PLUGIN+TCq
+ERIClitpstplugtc4_NetView - example plugin using NetworkView to get network info on each network of each node. Only invoked when package-list created with name containing LONG

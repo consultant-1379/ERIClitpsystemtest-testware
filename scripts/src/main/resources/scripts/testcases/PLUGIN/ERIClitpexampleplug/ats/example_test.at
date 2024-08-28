@@ -1,0 +1,5 @@
+litp create -t deployment -p /deployments/example_deployment
+litp create -t cluster -p /deployments/example_deployment/clusters/cluster1
+litp create -t node -p /deployments/example_deployment/clusters/cluster1/nodes/node1 -o hostname='node1'
+litp create -t example-item -p /software/items/ex1 -o name='amanda' rubbish='1' size='1B'
+

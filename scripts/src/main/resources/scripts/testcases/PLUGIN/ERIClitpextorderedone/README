@@ -1,0 +1,20 @@
+This plugin was created using the variables
+PLUGIN_NAME=extorderedone
+PLUGIN_CLASSNAME=ExtOrderedOne
+PLUGIN_CXP=CXP1234567
+It uses items in the core and package extension, and defines an ordered list containing 2 config and 2 callbacks tasks for each package-list it finds under each task that has ORDTEST in its name
+For each packagelist under each node it creates the following files:
+Config1 - creates file /etc/example_ord1_conf1_<hostname>_<packagelistname> on each managed node
+Config2 - creates file /etc/example_ord1_conf2_<hostname>_<packagelistname> on each managed node
+Callback1 - creates file /etc/example_ord1_call1_<hostname>_<packagelistname> on the MS
+Callback2 - creates file /etc/example_ord1_call2_<hostname>_<packagelistname> on the MS
+
+Currently creates them in a list as:
+callback1,config2,callback2,config1
+
+After LITPCDS-2114 is complete this will be an ordered list.
+
+Files changed from the template are:
+ERIClitpextorderedone/pom.xml
+src/extorderedone_plugin/extorderedone_plugin.py
+ats/example_test.at

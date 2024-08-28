@@ -1,0 +1,7 @@
+litp create -p /software/items/pack1 -t package-list -o name="AMANDA"
+litp create -p /deployments/example_deployment                                -t deployment
+litp create -p /deployments/example_deployment/clusters/cluster1              -t cluster
+litp create -p /deployments/example_deployment/clusters/cluster1/nodes/node1  -t node        -o hostname='node1' 
+litp create -p /infrastructure/storage/storage_profiles/profile_1 -t storage-profile -o storage_profile_name='sp1'
+litp link -p /deployments/example_deployment/clusters/cluster1/nodes/node1/storage_profile -t storage-profile-base -o storage_profile_name='sp1'
+litp link -p /deployments/example_deployment/clusters/cluster1/nodes/node1/items/pack1 -t package-list -o name="AMANDA"

@@ -1,0 +1,179 @@
+**************************************
+Details of files in this directory
+**************************************
+
+capture_info.sh  - script to record number of file descriptors, number of threads and list of open files (lsof)
+                 - copy to root's home dir and change permissions: chmod 777 capture_info.sh 
+
+./capture_info.sh $1
+$1 - pid of litpd service
+
+Use as cronjob on MS to capture data every 15 mins:
+*/15 * * * * $HOME/capture_info.sh <pid>
+
+
+And eight scripts used to extract information from results - see Processing Results
+examineTop.pl
+extract.cpu.percentage.sh
+extract.fromfree.sh
+extract.pid.fromtop.sh
+extract.program.fromps_mem.sh
+extract.time.sh
+extract.total.usedmem.sh
+extract.uptime.cpu.top.sh
+
+**************************************
+Background info on Resource Monitoring
+**************************************
+
+Cron jobs
+
+top, ps, vmstat, iostat and df are used to monitor resources.
+
+Plus a script, capture_info.sh which takes the pid of the litpd service as an argument and uses /proc data to record number of file descriptors and threads used by litpd service.
+
+Plus a script, ps_mem.py which uses /proc data to record total memory use of processes.
+Available here:  https://raw.githubusercontent.com/pixelb/ps_mem/master/ps_mem.py
+
+Set up the following cronjobs to monitor resources and output data to files in /tmp
+
+MS
+	[root@ms1 ~]# crontab -l
+
+	*/15 * * * * $HOME/capture_info.sh <pid>
+
+	0 */6 * * * date >> /tmp/log_iostat_MS && iostat -d -x 30 120 >> /tmp/log_iostat_MS
+
+	06 * * * * date >> /tmp/log_vmstat_MS && vmstat 5 10 >> /tmp/log_vmstat_MS
+
+	07 * * * * date >> /tmp/log_ps_MS && ps aux  >> /tmp/log_ps_MS
+
+	08 * * * * date >> /tmp/log_free_MS && free -m >> /tmp/log_free_MS
+
+	10 * * * * date >> /tmp/log_mem_MS && ps -eo rss | awk '{sum=sum+$1}END{print sum}' >> /tmp/log_mem_MS
+
+	25 18 * * * date >> /tmp/log_df_MS && df -h >> /tmp/log_df_MS
+
+	*/30 * * * * date>> /tmp/log_ps_mem_MS && python /root/ps_mem.py >> /tmp/log_ps_mem_MS
+
+And either this top command which is used to look at memory:
+	05 * * * * date >> /tmp/log_top_MS && top -b -n1 >> /tmp/log_top_MS 
+
+
+Or alternatively monitor CPU with this top command which takes a sample every 6 hours:
+	0 */6 * * * date >> /tmp/log_top_CPU_MS && top -b -d 30 -n 120 >> /tmp/log_top_CPU_MS
+
+ 
+
+Node1:
+	[root@SC-1 ~]# crontab -l
+	0 */6 * * * date >> /tmp/log_iostat_SC1 && iostat -d -x 30 120 >> /tmp/log_iostat_SC1
+
+	06 * * * * date >> /tmp/log_vmstat_SC1 && vmstat 5 10 >> /tmp/log_vmstat_SC1
+
+	07 * * * * date >> /tmp/log_free_SC1 && free -m >> /tmp/log_free_SC1
+
+	08 * * * * date >> /tmp/log_ps_SC1 && ps aux  >> /tmp/log_ps_SC1
+
+	10 * * * * date >> /tmp/log_mem_SC1 && ps -eo rss | awk '{sum=sum+$1}END{print sum}' >> /tmp/log_mem_SC1
+
+	25 18 * * * date >> /tmp/log_df_SC1 && df -h >> /tmp/log_df_SC1
+
+	*/30 * * * * date >> /tmp/log_ps_mem_SC1 && python /root/ps_mem.py >> /tmp/log_ps_mem_SC1
+
+And either this top command used to look at memory:
+	05 * * * * date >> /tmp/log_top_SC1 && top -b -n1 >> /tmp/log_top_SC1
+
+Or alternatively monitor CPU with this top command which takes a sample every 6 hours:
+	0 */6 * * * date >> /tmp/log_top_CPU_SC1 && top -b -d 30 -n 120 >> /tmp/log_top_CPU_SC1
+
+ 
+Node2:
+	[root@SC-2 ~]# crontab -l
+
+	0 */6 * * * date >> /tmp/log_iostat_SC2 && iostat -d -x 30 120 >> /tmp/log_iostat_SC2
+
+	06 * * * * date >> /tmp/log_vmstat_SC2 && vmstat 5 10 >> /tmp/log_vmstat_SC2
+
+	07 * * * * date >> /tmp/log_free_SC2 && free -m >> /tmp/log_free_SC2
+
+	08 * * * * date >> /tmp/log_ps_SC2 && ps aux  >> /tmp/log_ps_SC2
+
+	10 * * * * date >> /tmp/log_mem_SC2 && ps -eo rss | awk '{sum=sum+$1}END{print sum}' >> /tmp/log_mem_SC2
+
+	25 18 * * * date >> /tmp/log_df_SC2 && df -h >> /tmp/log_df_SC2
+
+	*/30 * * * * date >> /tmp/log_ps_mem_SC2 && python /root/ps_mem.py >> /tmp/log_ps_mem_SC2
+
+
+And either this top command used to look at memory:
+	05 * * * * date >> /tmp/log_top_SC2 && top -b -n1 >> /tmp/log_top_SC2
+
+Or alternatively monitor CPU with this top command which takes a sample every 6 hours:
+	0 */6 * * * date >> /tmp/log_top_CPU_SC2 && top -b -d 30 -n 120 >> /tmp/log_top_CPU_SC2
+
+
+**************************************
+Processing Results
+**************************************
+
+
+Gather all the log files from /tmp on each node and copy them to your local machine.
+
+
+1) Memory stats from top
+
+The output from hourly top runs can be processed with the attached perl script (examineTop.pl) which creates graphs of memory for each process (from Patrick Bohan).
+Edit the script to set the location of the top output - around line 115. And also create the destination folder. The result is a number of html files in the destination folder. 
+Open main.html with a web browser - that shows a list of processes on the left. Select a process and it shows a graph of memory against time. Both VIRT (virtual) and RES (resident) memory are shown on the same graph - these can be very different scale numbers. It is a good idea to check the RES values are truly flat by looking at the numbers - run the mouse over the blue line.
+Note this only produces graphs for processes that are running at the end of the data sample. If processes have stopped before the end of the sample period then they wont be shown. So for example puppet client restarts every Sunday morning so only the graph for the currently running process will be shown. You can use this script with output from the 30 second top runs through this too - but it isn't ideal - as that is a lot of data.
+
+
+2) Per process stats from top
+
+If there is any process that I'd like to look at in a bit more detail then I used this basic script (extract.pid.fromtop.sh) to pull out all the entries for that individual process (including CPU) and open up the .csv files as a spreadsheet and draw a graph.
+This script expects the pid of the process as the first argument so its usage is: ./extract.pid.fromtop.sh <pid>
+
+ 
+
+3) Memory stats from perl script.
+
+Spreadsheets can be produced of output from ps_mem.py using extract.program.fromps_mem.sh - import the csv file into a spreadsheet.
+The perl script, ps_mem.py, looks at total for a application rather than individual processes. So for example there will be just one number for puppet - and that will be the sum of all puppet processes.
+
+ 
+
+4) Overall CPU stats from top
+
+Spreadsheets can be produced of output of top CPU tests using extract.cpu.percentage.sh. This basic script extracts the percentage of total CPU which is idle, %CPU used by the system, %CPU used by user and writes each to a separate .csv file.
+
+ 
+
+5) Memory stats from free
+
+The most useful information from this command is the amount of free memory "-/+ buffers/cache". This is how much free ram the system has, more info here: http://www.linuxatemyram.com/
+
+Spreadsheets can be produced of output of free using extract.fromfree.sh - import the csv file.
+
+ 
+
+6) Memory stats from ps -eo
+
+ps -eo rss | awk '{sum=sum+$1}END{print sum}'
+
+Looking at this statistic was suggested by development instead of using free. See this 1.x ticket for more info: LITP-3810. You can extract the data into a csv file using this simple script: extract.total.usedmem.sh
+
+ 
+
+7) Time axis
+
+This script extracts the date from most of the results: extract.time.sh
+
+ 
+A different script needs to be used to extract time info from the CPU load data generated with "top -b -d 30 -n 120"
+
+This data has the time and the uptime on the first line.
+"top - 08:49:51 up 11:10,  1 user,  load average: 1.81, 0.69, 0.52"
+
+I have a basic script which pulls out the 'uptime': extract.uptime.cpu.top.sh.
+

@@ -1,0 +1,28 @@
+This plugin was created using the variables
+PLUGIN_NAME=exampleplug
+PLUGIN_CLASSNAME=Exampleplug
+PlUGIN_CXP=CXP1234567
+
+It uses the example-item defined in the ERIClitpexampleextapi extension, and therefore the exampleextapi extension must be installed on your development environnment first. On the LITP node the ERIClitpexampleextapi and ERIClitpexampleplug can be installed at the same time.
+
+Has a few modes:
+1. example-item exists with "CALL" in name but not "LINK", and has no child
+Create a CallbackTask that will update updatable field on example-item and create file
+2. example-item exists with "CALL" in name but not "LINK", and has child
+Create a CallbackTask that will update updatable field on example-lower-child and create file
+3. example-item exists with "CALL" in name and "LINK", and has no child
+Create a CallbackTask that will update updatable field on linked example-item which is expected to fail as its a link item
+4. example-item exists with "CALL" in name but not "LINK", and has child
+Create a CallbackTask that will update updatable field on example-lower-child  under the linked example-item which is expected to fail as its a link item
+5. else
+It creates a ConfigTask for each example-item created under each node. The ConfigTask creates a puppet resource that ensure that the file /etc/exampleplug_<name>_<size>_<rubbish>.txt always exists on each  managed node.
+
+The files changed from the template produced by the archetype are:
+ERIClitpexampleplug/src/exampleplug_plugin/exampleplug_plugin.py
+ERIClitpexampleplug/ERIClitpexampleplug_CXP1234567/pom.xml (to add dependency to the extapi)
+ERIClitpexampleplug/ats/example_test.at
+
+NB. Unit-test should have been altered, but further information is required on unit-testing in general.
+
+In addition if the name of the example-item has "call" in the title, it will use callback tasks in ordered list and try and update an updatable plugin value.
+

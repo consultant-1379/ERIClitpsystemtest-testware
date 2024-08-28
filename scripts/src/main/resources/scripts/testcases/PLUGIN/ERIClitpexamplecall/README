@@ -1,0 +1,10 @@
+This plugin was created using the variables
+PLUGIN_NAME=examplecall
+PLUGIN_CLASSNAME=Examplecall
+PlUGIN_CXP=CXP1234567
+
+It uses only items in the core extension, and uses CallbackTask to be informed when a package-list with name that includes EXCALL is initialised or updated. In 2.0 it gets run in phase 6 of an initial run, for instance when a single blade is installed. When informed of node creation its create_file method is called, which then creates a file for each node, called /etc/examplecall_<nodename>_<packagelist>.txt, where <nodename> is taken from the hostname property of a node.
+Usually file creation would be managed by puppet but this just is designed to test CallbackTasks.
+
+The files changed from the template produced by the archetype are:
+ERIClitpexamplecall/src/examplecall_plugin/examplecall_plugin.py
